@@ -145,19 +145,21 @@ def student_counting(students):
             counter_gender_student['men'] += 1
         else:
             counter_gender_student['female'] += 1
-    if counter_gender_student['men'] > counter_gender_student['female']:
-        return True 
-    else:
-        return False 
+    return counter_gender_student
 
 
+count_stud_dict = {}
 
 for classes in school:
     students = classes['students']
     class_num = classes['class']
     count_gend_stud = student_counting(students)
-    
-    if count_gend_stud is True:
-        print(f'Больше всего мальчиков в классе {class_num}')
-    else:
-        print(f'Больше всего девочек в классе {class_num}')
+    count_stud_dict[class_num] = count_gend_stud
+if count_stud_dict['2a']['men'] > count_stud_dict['3c']['men']:
+    print('Больше всего мальчиков в классе 2a')
+elif count_stud_dict['2a']['men'] < count_stud_dict['3c']['men']:
+    print('Больше всего мальчиков в классе 3с')
+if count_stud_dict['2a']['female'] > count_stud_dict['3c']['female']:
+    print('Больше всего девочек в классе 2a')
+elif count_stud_dict['2a']['female'] < count_stud_dict['3c']['female']:
+    print('Больше всего девочек в классе 3c')
