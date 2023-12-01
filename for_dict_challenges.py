@@ -148,18 +148,19 @@ def student_counting(students):
     return counter_gender_student
 
 
-count_stud_dict = {}
+female_max = 0
+men_max = 0
+classF_max = ''
+classM_max = ''
 
 for classes in school:
     students = classes['students']
     class_num = classes['class']
     count_gend_stud = student_counting(students)
-    count_stud_dict[class_num] = count_gend_stud
-if count_stud_dict['2a']['men'] > count_stud_dict['3c']['men']:
-    print('Больше всего мальчиков в классе 2a')
-elif count_stud_dict['2a']['men'] < count_stud_dict['3c']['men']:
-    print('Больше всего мальчиков в классе 3с')
-if count_stud_dict['2a']['female'] > count_stud_dict['3c']['female']:
-    print('Больше всего девочек в классе 2a')
-elif count_stud_dict['2a']['female'] < count_stud_dict['3c']['female']:
-    print('Больше всего девочек в классе 3c')
+    if count_gend_stud['men'] > men_max:
+        men_max = count_gend_stud['men']
+        classM_max = class_num
+    if count_gend_stud['female'] > female_max:
+        female_max = count_gend_stud['female']
+        classF_max = class_num
+print(f'Больше всего мальчиков в классе {classM_max} \nБольше всего девочек в классе {classF_max}')
